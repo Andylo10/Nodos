@@ -3,10 +3,10 @@ using System;
 
 public class Nodo
 {
-    public int Data { get; set; }
+    public string Data { get; set; }
     public Nodo Siguiente { get; set; }
 
-    public Nodo(int data)
+    public Nodo(string data)
     {
         Data = data;
         Siguiente = null;
@@ -22,7 +22,7 @@ public class ListaEnlazada
         cabeza = null;
     }
 
-    public void Agregar(int data)
+    public void Agregar(string data)
     {
         Nodo nuevoNodo = new Nodo(data);
         if (cabeza == null)
@@ -40,7 +40,7 @@ public class ListaEnlazada
         }
     }
 
-    public void Eliminar(int data)
+    public void Eliminar(string data)
     {
         if (cabeza == null)
         {
@@ -51,7 +51,7 @@ public class ListaEnlazada
         if (cabeza.Data == data)
         {
             cabeza = cabeza.Siguiente;
-            Console.WriteLine($"Nodo con valor {data} eliminado.");
+            Console.WriteLine($"Nodo con valor '{data}' eliminado.");
             return;
         }
 
@@ -63,32 +63,32 @@ public class ListaEnlazada
 
         if (actual.Siguiente == null)
         {
-            Console.WriteLine($"El nodo con valor {data} no se encontró.");
+            Console.WriteLine($"El nodo con valor '{data}' no se encontró.");
         }
         else
         {
             actual.Siguiente = actual.Siguiente.Siguiente;
-            Console.WriteLine($"Nodo con valor {data} eliminado.");
+            Console.WriteLine($"Nodo con valor '{data}' eliminado.");
         }
     }
 
-    public bool Buscar(int data)
+    public bool Buscar(string data)
     {
         Nodo actual = cabeza;
         while (actual != null)
         {
             if (actual.Data == data)
             {
-                Console.WriteLine($"Nodo con valor {data} encontrado.");
+                Console.WriteLine($"Nodo con valor '{data}' encontrado.");
                 return true;
             }
             actual = actual.Siguiente;
         }
-        Console.WriteLine($"Nodo con valor {data} no se encontró.");
+        Console.WriteLine($"Nodo con valor '{data}' no se encontró.");
         return false;
     }
 
-    public void Modificar(int valorAntiguo, int valorNuevo)
+    public void Modificar(string valorAntiguo, string valorNuevo)
     {
         Nodo actual = cabeza;
         while (actual != null)
@@ -96,12 +96,12 @@ public class ListaEnlazada
             if (actual.Data == valorAntiguo)
             {
                 actual.Data = valorNuevo;
-                Console.WriteLine($"Nodo con valor {valorAntiguo} modificado a {valorNuevo}.");
+                Console.WriteLine($"Nodo con valor '{valorAntiguo}' modificado a '{valorNuevo}'.");
                 return;
             }
             actual = actual.Siguiente;
         }
-        Console.WriteLine($"Nodo con valor {valorAntiguo} no se encontró.");
+        Console.WriteLine($"Nodo con valor '{valorAntiguo}' no se encontró.");
     }
 
     public void Imprimir()
@@ -145,27 +145,27 @@ public class Program
             {
                 case 1:
                     Console.Write("Ingrese el valor a agregar: ");
-                    int valorAgregar = int.Parse(Console.ReadLine());
+                    string valorAgregar = Console.ReadLine();
                     lista.Agregar(valorAgregar);
                     break;
 
                 case 2:
                     Console.Write("Ingrese el valor a eliminar: ");
-                    int valorEliminar = int.Parse(Console.ReadLine());
+                    string valorEliminar = Console.ReadLine();
                     lista.Eliminar(valorEliminar);
                     break;
 
                 case 3:
                     Console.Write("Ingrese el valor a buscar: ");
-                    int valorBuscar = int.Parse(Console.ReadLine());
+                    string valorBuscar = Console.ReadLine();
                     lista.Buscar(valorBuscar);
                     break;
 
                 case 4:
                     Console.Write("Ingrese el valor a modificar: ");
-                    int valorAntiguo = int.Parse(Console.ReadLine());
+                    string valorAntiguo = Console.ReadLine();
                     Console.Write("Ingrese el nuevo valor: ");
-                    int valorNuevo = int.Parse(Console.ReadLine());
+                    string valorNuevo = Console.ReadLine();
                     lista.Modificar(valorAntiguo, valorNuevo);
                     break;
 
